@@ -17,6 +17,7 @@ const ScriblioCanvas = ({ boardId }: ScriblioCanvasProps) => {
   const [activeTool, setActiveTool] = useState<Tool>("select");
   const [activeColor, setActiveColor] = useState("#8B5CF6");
   const isDrawingRef = useRef(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -177,6 +178,9 @@ const ScriblioCanvas = ({ boardId }: ScriblioCanvasProps) => {
       });
     }
 
+    canvas.on('mouse:down', () => setIsEditing(true));
+    canvas.on('mouse:up', () => setIsEditing(false));
+
   }, [activeTool, fabricCanvas, activeColor]);
 
   const handleClearCanvas = () => {
@@ -284,7 +288,9 @@ const ScriblioCanvas = ({ boardId }: ScriblioCanvasProps) => {
 
       <MiniMap mainCanvas={fabricCanvas} />
       
-      <canvas ref={canvasRef} />
+      <div className={`canvas-container transition-all duration-200 ${isEditing ? 'editing' : 'idle'}`}>
+        <canvas ref={canvasRef} />
+      </div>
     </div>
   );
 };
