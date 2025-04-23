@@ -19,6 +19,13 @@ export default {
 		},
 		extend: {
 			colors: {
+				scriblio: {
+					purple: '#8B5CF6',
+					pink: '#EC4899',
+					yellow: '#F59E0B',
+					green: '#10B981',
+					blue: '#3B82F6',
+				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

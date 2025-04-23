@@ -1,0 +1,54 @@
+
+.canvas-container {
+  width: 100% !important;
+  height: calc(100vh - 56px) !important;
+  cursor: grab;
+}
+
+.canvas-container:active {
+  cursor: grabbing;
+}
+
+.grabbing {
+  cursor: grabbing !important;
+}
+
+.drawing {
+  cursor: crosshair !important;
+}
+
+.tool-button {
+  transition: all 0.2s ease;
+}
+
+.tool-button:hover {
+  transform: translateY(-2px);
+}
+
+.tool-button.active {
+  background-color: #8B5CF6;
+  color: white;
+}
+
+.color-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.color-swatch:hover {
+  transform: scale(1.15);
+}
+
+.color-swatch.active {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px #8B5CF6;
+}
+
+.scriblio-toolbar {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+}
