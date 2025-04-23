@@ -6,7 +6,11 @@ import MiniMap from "./MiniMap";
 
 type Tool = "select" | "draw" | "rectangle" | "circle" | "text";
 
-const ScriblioCanvas = () => {
+interface ScriblioCanvasProps {
+  boardId?: string;
+}
+
+const ScriblioCanvas = ({ boardId }: ScriblioCanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [fabricCanvas, setFabricCanvas] = useState<Canvas | null>(null);
   const [activeTool, setActiveTool] = useState<Tool>("select");
