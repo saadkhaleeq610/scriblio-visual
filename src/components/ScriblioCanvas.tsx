@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react";
 import { Canvas, Circle, IText, Rect, Point } from "fabric";
 import { Button } from "@/components/ui/button";
@@ -67,9 +66,11 @@ const ScriblioCanvas = () => {
       }
     });
 
-    // Set up free drawing brush
-    canvas.freeDrawingBrush.color = activeColor;
-    canvas.freeDrawingBrush.width = 2;
+    // Set up free drawing brush - Make sure the freeDrawingBrush is initialized here
+    if (canvas.freeDrawingBrush) {
+      canvas.freeDrawingBrush.color = activeColor;
+      canvas.freeDrawingBrush.width = 2;
+    }
     
     // Handle window resize
     const handleResize = () => {
@@ -100,6 +101,11 @@ const ScriblioCanvas = () => {
         break;
       case "draw":
         fabricCanvas.defaultCursor = "crosshair";
+        // Make sure the freeDrawingBrush is available before setting its properties
+        if (fabricCanvas.freeDrawingBrush) {
+          fabricCanvas.freeDrawingBrush.color = activeColor;
+          fabricCanvas.freeDrawingBrush.width = 2;
+        }
         break;
       case "rectangle":
       case "circle":
